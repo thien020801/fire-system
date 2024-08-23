@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SmartDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="farm">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="imageURL" Type="varchar" MaxLength="50" />
+    <Property Name="description" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SmartDB.dbo.SensorData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SensorData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="temperature" Type="float" />
+    <Property Name="humid" Type="float" />
+    <Property Name="time" Type="datetime" />
+    <Property Name="farmid" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityContainer Name="SmartDBModelStoreContainer">
+    <EntitySet Name="farm" EntityType="Self.farm" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SensorData" EntityType="Self.SensorData" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[SensorData].[id] AS [id], 
+[SensorData].[temperature] AS [temperature], 
+[SensorData].[humid] AS [humid], 
+[SensorData].[time] AS [time], 
+[SensorData].[farmid] AS [farmid]
+FROM [dbo].[SensorData] AS [SensorData]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SmartDBModelStoreContainer" CdmEntityContainer="SmartDBEntities">
+    <EntitySetMapping Name="farms">
+      <EntityTypeMapping TypeName="SmartDBModel.farm">
+        <MappingFragment StoreEntitySet="farm">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="imageURL" ColumnName="imageURL" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SensorDatas">
+      <EntityTypeMapping TypeName="SmartDBModel.SensorData">
+        <MappingFragment StoreEntitySet="SensorData">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="temperature" ColumnName="temperature" />
+          <ScalarProperty Name="humid" ColumnName="humid" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="farmid" ColumnName="farmid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
